@@ -22,7 +22,7 @@ var map = L.mapbox.map('map', 'mapbox.light')
 //var Path = PathOptions (fillColor: "#00CC77");
 
 var featureLayer = L.mapbox.featureLayer()
-    .loadURL('../Stations_2015.geojson')
+    .loadURL('https://github.com/knikolaj/velodata/blob/gh-pages/Stations_2015.geojson')
 	.on('ready', function(e)
 	{
 	var source = e.target.getGeoJSON();
