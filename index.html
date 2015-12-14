@@ -19,7 +19,6 @@ L.mapbox.accessToken = 'pk.eyJ1IjoibWluaWthcm1hIiwiYSI6IkRjTUFYdGsifQ.30RhErOKbQ
 var map = L.mapbox.map('map', 'mapbox.light')
     .setView([59.939095,30.315868], 12);
 	
-//var Path = PathOptions (fillColor: "#00CC77");
 
 var featureLayer = L.mapbox.featureLayer()
     .loadURL('https://dl.dropboxusercontent.com/u/30683557/Tmp/Stations_2015.geojson')
@@ -38,8 +37,24 @@ var featureLayer = L.mapbox.featureLayer()
 	});
 	})
  //   .addTo(map);
-	
-// github pages
+ 
+ 
+var featureLayer2 = L.mapbox.featureLayer2()
+    .loadURL('https://dl.dropboxusercontent.com/u/30683557/Tmp/Project100_campuses.json')
+	.on('ready', function(e)
+	{
+	var source = e.target.getGeoJSON();
+	source.features.forEach(function(feature)
+	{
+	console.log(feature.geometry.coordinates);
+	L.circle([feature.geometry.coordinates[1],feature.geometry.coordinates[0]], 50, {
+		fillColor: "#27bdd8",
+		stroke: false,
+		fillOpacity: 0.5
+		})
+	.addTo(map);
+	});
+	})
   
 </script>
 </body>
